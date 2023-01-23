@@ -9,7 +9,14 @@
 ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 ;
 ;==========================================================
-
+[bar/secondary]
+width = 100%
+height = 32
+background = #222
+override-redirect = false
+module-left =
+module-center =
+module-right = 
 [colors]
 ;background = ${xrdb:color0:#222}
 background = #222
@@ -20,17 +27,16 @@ foreground-alt = #555
 primary =  #252AA3
 secondary = #e60053
 alert = #bd2c40
-
 [bar/main]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 27
+height = 32
 ;offset-x = 1%
-;offset-y = 1%
-radius = 0
+offset-y = 1%
+radius = 12
 fixed-center = false
 
-background = #00000000
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -39,8 +45,8 @@ line-color = #f000
 border-size = 0
 border-color = #00000000
 
-padding-left = 0
-padding-right = 0
+padding-left = 5
+padding-right = 5
 
 module-margin-left = 1
 module-margin-right = 2
@@ -49,16 +55,16 @@ font-0 = fixed:pixelsize=10
 font-1 = FontAwesome:size=10
 font-2 = siji:pixelsize=10;1
 
-modules-left = date
-modules-center = i3
-modules-right = pulseaudio battery 
+modules-left = i3 
+modules-center = 
+modules-right = pulseaudio battery date
 # powermenu
 
-tray-position = right
+tray-position = center
 tray-padding = 2
 ;tray-background = #0063ff
 
-;wm-restack = i3
+wm-restack = i3
 
 ;override-redirect = true
 
@@ -92,23 +98,23 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %icon%
+label-focused = %index%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index% %icon%
+label-unfocused = %index%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index% %icon%
+label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index% %icon%
+label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -143,7 +149,7 @@ format-volume =  <label-volume> <bar-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇
+label-muted = 0%
 label-muted-foreground = #666
 
 bar-volume-width = 10
@@ -169,24 +175,26 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
+format-charging = <animation-charging> <ramp-capacity> <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = <ramp-capacity> <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
+format-full-prefix =    
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 =  
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
